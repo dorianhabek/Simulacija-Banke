@@ -9,7 +9,7 @@ begin
         where current of upd_curs;
         brojac := brojac + 10;
     end loop;
-    
+commit; 
 end;
 /
 select * from zaposlenici_poslovnice;        
