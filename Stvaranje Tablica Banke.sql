@@ -38,7 +38,7 @@ create table krediti(
     iznos_kredita number not null,
     kamata number not null,
     datum_izdavanja date not null,
-    datum_zavröetka date not null,
+    datum_zavr≈°etka date not null,
     id_zaposlenika number not null unique  
 );
 
@@ -84,16 +84,12 @@ create table detalji_odjela(
 create table obracun_place(
     id_obracun_place number primary key not null,
     id_detalji_zaposlenika number not null unique,
-    broj_sati number,
-    prekovremeni number,
-    stimulacija number,
     bruto_placa number,
     neto_placa number
 );
 
 create table razred_place (
     porezni_razred number,
-    stopa_poreza number,
     min_placa number,
     max_placa number
 );
