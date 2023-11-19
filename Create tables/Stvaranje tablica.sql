@@ -93,3 +93,14 @@ create table razred_place (
     min_placa number,
     max_placa number
 );
+
+create table transakcije
+(
+serijski_broj number primary key,
+from_acc varchar2(50),
+to_acc varchar2(50),
+iznos number not null,
+datum date not null,
+transakcijski_kod varchar2(50) not null,
+kod_izvršenja number
+)
