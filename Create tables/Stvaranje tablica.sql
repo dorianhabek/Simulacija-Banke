@@ -33,6 +33,7 @@ create table racuni(
 
 create table krediti(
     id_kredita number primary key not null ,
+    id_klijenta number,
     broj_racuna number not null unique,
     tip_kredita varchar2(50) not null,
     iznos_kredita number not null,
