@@ -14,7 +14,7 @@ declare
     is select kli.ime_klijenta,kli.prezime_klijenta,rac.broj_racuna
     from klijenti kli 
     join racuni rac 
-    on(rac.broj_racuna = kli.broj_racuna) where datum_stvaranja = datum;
+    on(kli.id_klijenta = rac.id_klijenta) where to_char(datum_stvaranja) = datum;
     
 
 begin
@@ -33,5 +33,6 @@ end;
 
 
 begin
-    proc_klij(datum => '12/11/2023');
+    
+    proc_klij (datum => '21/11/2023');
 end;
