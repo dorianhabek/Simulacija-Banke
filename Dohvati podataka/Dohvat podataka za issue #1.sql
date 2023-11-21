@@ -15,7 +15,7 @@ declare
     is cursor cur_klij(idx in number) is select klij.ime_klijenta, klij.prezime_klijenta, rac.broj_racuna, rac.balans,
     rac.datum_stvaranja from klijenti klij
     inner join racuni rac
-    on(klij.broj_racuna = rac.broj_racuna) where klij.id_klijenta = idx;
+    on(klij.id_klijenta = rac.id_klijenta) where klij.id_klijenta = idx;
     
 begin
     
