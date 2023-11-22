@@ -63,5 +63,5 @@ END OBRACUN_ISPLATA_PLACE;
 /
 --Pozivanje procedure iz paketa
 
-execute obracun_isplata_place.unos_place(1,101,1000);
+execute obracun_isplata_place.unos_place(pk_id_obracun_place.nextval,20,1500);
 select * from obracun_place;
