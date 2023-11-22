@@ -4,6 +4,8 @@ create or replace PROCEDURE TRANSAKCIJA(fr_acc number, to_acc number, doznaka va
 
     cursor cur_to_acc(to_acc number) is select broj_racuna,balans from racuni where broj_racuna = to_acc;
 
+    
+
     fr_rac_row cur_fr_acc%rowtype;
     to_rac_row cur_to_acc%rowtype;
     kod_trans transakcije.kod_izvršenja%type;
@@ -35,7 +37,7 @@ begin
         end if;
 
     elsif doznaka = 'U' then --uplata
-        if fr_acc = fr_rac_row.broj_racuna then
+        if fr_acc = to_acc then
                     kod_trans := 3; --nije moguče izvršiti radnju na vlastiti račun
         else
             open cur_fr_acc(fr_acc);
@@ -51,7 +53,7 @@ begin
                 else
                     update racuni set balans = fr_rac_row.balans - iznos
                     where broj_racuna = fr_acc;
-
+                    commit;
                     open cur_to_acc(to_acc);
                     fetch cur_to_acc into to_rac_row;
                     not_found := cur_to_acc%notfound;
