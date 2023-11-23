@@ -1,4 +1,5 @@
-create or replace PROCEDURE TRANSAKCIJA(fr_acc number, to_acc number, doznaka varchar2, iznos number) AS 
+CREATE OR REPLACE
+PROCEDURE TRANSAKCIJA(fr_acc number, to_acc number, doznaka varchar2, iznos number) AS 
 
     cursor cur_fr_acc(fr_acc number) is select broj_racuna,balans from racuni where broj_racuna = fr_acc;
 
@@ -32,10 +33,10 @@ begin
                 commit;
 
             end if;
-            insert into transakcije values(next_id,fr_acc,to_acc,iznos,sysdate,doznaka,kod_trans);
-            
         end if;
-
+        
+    insert into transakcije values(next_id,fr_acc,to_acc,iznos,sysdate,doznaka,kod_trans);
+    
     elsif doznaka = 'U' then --uplata
         if fr_acc = to_acc then
                     kod_trans := 3; --nije moguče izvršiti radnju na vlastiti račun
@@ -69,7 +70,7 @@ begin
                 end if;
             end if;
         end if;
-        insert into transakcije values(next_id,fr_acc,to_acc,iznos,sysdate,doznaka,kod_trans);
+    insert into transakcije values(next_id,fr_acc,to_acc,iznos,sysdate,doznaka,kod_trans);
         
     end if;
     
